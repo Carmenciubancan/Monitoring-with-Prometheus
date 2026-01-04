@@ -1,0 +1,21 @@
+# Configuration for Redis Exporter Helm chart
+# This tells the exporter where to find Redis and how to expose metrics
+
+# Redis connection settings
+redisAddress: redis:6379
+
+# ServiceMonitor enables Prometheus to auto-discover this exporter
+serviceMonitor:
+  enabled: true
+  namespace: monitoring
+  labels:
+    release: monitoring
+
+# Resource limits for the exporter pod
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "50m"
+  limits:
+    memory: "128Mi"
+    cpu: "100m"
